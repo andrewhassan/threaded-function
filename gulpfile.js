@@ -5,7 +5,7 @@ const webpack = require('gulp-webpack');
 gulp.task('default', ['clean', 'build']);
 
 gulp.task('build', () => {
-    return gulp.src('src/index.js')
+    return gulp.src('src/ThreadedFunction.js')
         .pipe(webpack({
             output: {
                 filename: 'main.js',
