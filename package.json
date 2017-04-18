@@ -1,5 +1,5 @@
 {
-  "name": "threaded",
+  "name": "threaded-function",
   "version": "1.0.0",
   "description": "",
   "main": "src/ThreadedFunction.js",
