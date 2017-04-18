@@ -26,16 +26,10 @@ import {noop} from './utils';
 import workerHandler from './workerHandler';
 
 type WorkerFunctionType<ParamsType, ResultType> = (...params: ParamsType) => ResultType;
-type OptionsType = {
-    reuseWorker?: boolean,
-};
 
 const RESPONSE_TYPES = {
     ERROR: 'ERROR',
     COMPLETE: 'COMPLETE',
-};
-const DEFAULT_OPTIONS = {
-    reuseWorker: false,
 };
 
 // TODO: Better way of getting the Babel shims
@@ -43,13 +37,11 @@ const BABEL_TRANSFORMS = `var _typeof = typeof Symbol === "function" && typeof S
 
 export default class ThreadedFunction<ParamsType, ResultType> {
     _fn: WorkerFunctionType<ParamsType, ResultType>;
-    _options: OptionsType;
     _worker: ?Worker;
     _workerUrl: ?string;
 
-    constructor(pureFunction: Function, options?: OptionsType) { // TODO: flow type this properly
+    constructor(pureFunction: Function) { // TODO: flow type this properly
         this._fn = pureFunction;
-        this._options = Object.assign(DEFAULT_OPTIONS, options || {});
     }
 
     execute(...params: ParamsType): Promise<ResultType> {
