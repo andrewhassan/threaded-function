@@ -2,13 +2,14 @@
 const gulp = require('gulp');
 const webpack = require('gulp-webpack');
 
-gulp.task('default', ['clean', 'build']);
-
+gulp.task('default', ['build']);
 gulp.task('build', () => {
     return gulp.src('src/ThreadedFunction.js')
         .pipe(webpack({
             output: {
-                filename: 'main.js',
+                filename: 'ThreadedFunction.js',
+                library: 'threaded-function',
+                libraryTarget: 'umd',
             },
             module: {
                 loaders: [
@@ -16,9 +17,20 @@ gulp.task('build', () => {
                 ],
             },
         }))
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('clean', () => {
-    console.warn('Task: clean not implemented');
+gulp.task('build:demo', () => {
+    return gulp.src('demo/demo.js')
+        .pipe(webpack({
+            output: {
+                filename: 'compiled.js',
+            },
+            module: {
+                loaders: [
+                    { test: /\.js/, loader: 'babel-loader' },
+                ],
+            },
+        }))
+        .pipe(gulp.dest('demo/'));
 });

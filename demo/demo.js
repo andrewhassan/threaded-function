@@ -1,5 +1,5 @@
 // @flow
-import ThreadedFunction from './ThreadedFunction';
+import ThreadedFunction from '../dist/ThreadedFunction';
 
 function addOne(a: number): number {
     return a + 1;
