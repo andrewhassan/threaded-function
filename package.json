@@ -1,10 +1,11 @@
 {
   "name": "threaded-function",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Run functions in their own Worker threads",
   "main": "dist/ThreadedFunction.js",
   "author": "Andrew Hassan",
   "license": "Apache 2.0",
+  "url": "https://github.com/andrewhassan/threaded-function",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
